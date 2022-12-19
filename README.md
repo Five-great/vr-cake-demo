@@ -7,7 +7,9 @@
 - Demo蛋糕实物图片
 
 ![蛋糕实物](./img/weilan.jpg)
+
 - Demo蛋糕VR效果图
+
 ![蛋糕3D效果](./img/weilan_3D.png)
 
 
@@ -32,5 +34,6 @@
 
 ### 实际运用视频展示
 
-<iframe src="//player.bilibili.com/player.html?aid=513009253&bvid=BV1A3411A7Rr&cid=764773931&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+[three.js VR模型制作演示](//player.bilibili.com/player.html?aid=513009253&bvid=BV1A3411A7Rr&cid=764773931&page=1)
+
 
