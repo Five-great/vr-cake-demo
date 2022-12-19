@@ -5,6 +5,7 @@
 
 ![Demo 示意图](./img/vr-cake-demo.png)
 - Demo蛋糕实物图片
+
 ![蛋糕实物](./img/weilan.jpg)
 - Demo蛋糕VR效果图
 ![蛋糕3D效果](./img/weilan_3D.png)
