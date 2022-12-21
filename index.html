@@ -18,7 +18,20 @@
     <div id="tagsTitle"></div>
     <div id="Menu">
       <div class="MeunuData" style="background: rgba(255, 255, 255, 0)"></div>
-
+      <a class="github-btn" title="github" href="https://github.com/Five-great/vr-cake-demo">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          focusable="false"
+          viewBox="0 0 24 24"
+          class="icon"
+          data-v-726b0561=""
+        >
+          <path
+            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+          ></path>
+        </svg>
+      </a>
       <div id="MenuBtn">
         <img src="./img/weilan.jpg" class="showImg" title="蛋糕实物" alt="" />
         <div class="showImgBigBox">
@@ -65,14 +78,14 @@
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
     <script type="module">
       // //three.js webgl - mirror
-      import * as THREE from "./js/build/three.module.js";
-      import { OrbitControls } from "./js/controls/OrbitControls.js";
-      import { Reflector } from "./js/objects/Reflector.js";
-      import { EffectComposer } from "./js/postprocessing/EffectComposer.js";
-      import { RenderPass } from "./js/postprocessing/RenderPass.js";
-      import { ShaderPass } from "./js/postprocessing/ShaderPass.js";
-      import { OutlinePass } from "./js/postprocessing/OutlinePass.js";
-      import { FXAAShader } from "./js/shaders/FXAAShader.js";
+      import * as THREE from './js/build/three.module.js';
+      import { OrbitControls } from './js/controls/OrbitControls.js';
+      import { Reflector } from './js/objects/Reflector.js';
+      import { EffectComposer } from './js/postprocessing/EffectComposer.js';
+      import { RenderPass } from './js/postprocessing/RenderPass.js';
+      import { ShaderPass } from './js/postprocessing/ShaderPass.js';
+      import { OutlinePass } from './js/postprocessing/OutlinePass.js';
+      import { FXAAShader } from './js/shaders/FXAAShader.js';
       // scene size config
       var WIDTH = window.innerWidth;
       var HEIGHT = window.innerHeight;
@@ -89,23 +102,23 @@
       var selectedObjects = [];
       var raycaster = new THREE.Raycaster();
       var flag = 0;
-      var clickedTime = { timeA: " ", timeB: " " };
+      var clickedTime = { timeA: ' ', timeB: ' ' };
       var configOutline = {
         //外部轮廓配置
         edgeStrength: 5.0,
         edgeGlow: 1.0,
         edgeThickness: 3.0,
         pulsePeriod: 5,
-        visibleEdgeColor: "#efffee",
-        hiddenEdgeColor: "#190a05",
+        visibleEdgeColor: '#efffee',
+        hiddenEdgeColor: '#190a05',
         usePatternTexture: false,
       };
       // 常用变量
       var Texture = new THREE.TextureLoader().load(
-        "./img/weilan_waiquan_bg.png"
+        './img/weilan_waiquan_bg.png'
       );
       var TextureCute = new THREE.TextureLoader().load(
-        "./img/weilan_waiquan_qiu.png"
+        './img/weilan_waiquan_qiu.png'
       );
       var group = new THREE.Group(); //
       var groupMain = new THREE.Group();
@@ -121,12 +134,12 @@
       var moveCount = 0; //运动计数
       var tagsList = []; //标记数组
       var tagsFlag = false;
-      var stats = "";
+      var stats = '';
       var colorList = [];
       init(); //初始化
       animate();
       function init() {
-        var container = document.getElementById("container");
+        var container = document.getElementById('container');
         // renderer
         renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setPixelRatio(window.devicePixelRatio);
@@ -167,10 +180,10 @@
         topModel(); //顶部模型
         topModel(); //顶部模型
         outlinePassFun(); //外轮廓
-        window.addEventListener("resize", onWindowResize, false);
-        window.addEventListener("mousemove", onTouchMove);
-        window.addEventListener("touchmove", onTouchMove, true);
-        window.addEventListener("click", dbClick, true);
+        window.addEventListener('resize', onWindowResize, false);
+        window.addEventListener('mousemove', onTouchMove);
+        window.addEventListener('touchmove', onTouchMove, true);
+        window.addEventListener('click', dbClick, true);
         function onWindowResize() {
           var width = window.innerWidth;
           var height = window.innerHeight;
@@ -178,7 +191,7 @@
           camera.updateProjectionMatrix();
           renderer.setSize(width, height);
           composer.setSize(width, height);
-          effectFXAA.uniforms["resolution"].value.set(
+          effectFXAA.uniforms['resolution'].value.set(
             1 / window.innerWidth,
             1 / window.innerHeight
           );
@@ -201,7 +214,7 @@
           if (flag == 1) {
             clickedTime.timeB = new Date().getTime();
             if (Math.abs(clickedTime.timeB - clickedTime.timeA) < 500) {
-              console.log("双击");
+              console.log('双击');
               onTouchMove(event);
             }
             flag = 0;
@@ -275,13 +288,13 @@
         function addSelectedObject(object) {
           selectedObjects = [];
           if (object.name) {
-            $("#dataText")[0].innerText = object.userData.text;
-            $("#dataName")[0].innerText = object.name;
-            $(".show_info").addClass("on");
+            $('#dataText')[0].innerText = object.userData.text;
+            $('#dataName')[0].innerText = object.name;
+            $('.show_info').addClass('on');
             if (object.userData.type == 0) selectedObjects.push(object);
             if (object.userData.type == 1) selectedObjects = getType1(object);
             if (object.userData.type == 2) selectedObjects = getTypes(object);
-          } else $(".show_info").removeClass("on");
+          } else $('.show_info').removeClass('on');
         }
       }
 
@@ -293,9 +306,9 @@
         var P2 = new THREE.Mesh(geometry, glass_material);
         P2.opacity = 0.5;
         P2.receiveShadow = true;
-        P2.name = "蓝色的海(果冻)";
+        P2.name = '蓝色的海(果冻)';
         P2.userData = { type: 0, id: 16, sO: 2, sV: 18, sI: 100 };
-        P2.userData.text = "主要成分：果冻 ";
+        P2.userData.text = '主要成分：果冻 ';
         groupTop.add(P2);
         var geometry = new THREE.SphereBufferGeometry(
           5,
@@ -313,9 +326,9 @@
         P111.scale.set(2, 1.6, 1.52);
         P111.rotateX(Math.PI + 0.05);
         P111.rotateY(Math.PI);
-        P111.name = "帆船(饰品)";
+        P111.name = '帆船(饰品)';
         P111.userData = { type: 0, id: 18, sO: 2, sV: 25, sI: 100 };
-        P111.userData.text = "主要成分巧克力 ";
+        P111.userData.text = '主要成分巧克力 ';
         groupTop.add(P111);
 
         var P1 = new THREE.Mesh(
@@ -382,43 +395,43 @@
           new THREE.CylinderBufferGeometry(40, 40, 10, 64),
           new THREE.MeshBasicMaterial({ color: 0xfedd91 })
         );
-        P.name = "蛋糕胚子(底部)";
+        P.name = '蛋糕胚子(底部)';
         P.position.set(0, 0, 0);
         groupMain.add(P);
         P.userData = { type: 0, id: 11 };
-        P.userData.text = "主要成分：蛋糕";
+        P.userData.text = '主要成分：蛋糕';
         groupMainDabel.add(P.clone());
         P = new THREE.Mesh(
           new THREE.CylinderBufferGeometry(40, 40, 10, 64),
           new THREE.MeshBasicMaterial({ color: 0xfedd91 })
         );
 
-        P.name = "蛋糕胚子(中部)";
+        P.name = '蛋糕胚子(中部)';
         P.position.set(0, 12, 0);
         groupMain.add(P);
         P.userData = { type: 0, id: 12, sO: 2, sV: 8, sI: 100, sC: 0 };
-        P.userData.text = "主要成分：蛋糕";
+        P.userData.text = '主要成分：蛋糕';
         groupMainDabel.add(P.clone());
         P = new THREE.Mesh(
           new THREE.CylinderBufferGeometry(42, 42, 4, 64),
           new THREE.MeshBasicMaterial({ map: Texture })
         );
-        P.name = "慕斯夹层(中部)";
+        P.name = '慕斯夹层(中部)';
         P.position.set(0, 5, 0);
         groupMain.add(P);
         P.userData = { type: 0, id: 13, sO: 2, sV: 5, sI: 100, sC: 0 };
-        P.userData.text = "主要成分：慕斯";
+        P.userData.text = '主要成分：慕斯';
         colorList.push(P);
         groupMainDabel.add(P.clone());
         P = new THREE.Mesh(
           new THREE.CylinderBufferGeometry(41, 41, 6, 64),
           new THREE.MeshBasicMaterial({ map: Texture })
         );
-        P.name = "慕斯夹层(顶部)";
+        P.name = '慕斯夹层(顶部)';
         P.position.set(0, 21, 0);
         groupMain.add(P);
         P.userData = { type: 0, id: 14, sO: 2, sV: 10, sI: 100, sC: 0 };
-        P.userData.text = "主要成分：慕斯";
+        P.userData.text = '主要成分：慕斯';
         colorList.push(P);
         groupMainDabel.add(P.clone());
         // type:  0 ==> 单模型 只有该模型   1==> 模型组 同组同层次多个模型  2 ==> 不同组同层次模型组(最近根组向上2层), 复数 指定同组同层次索引
@@ -452,17 +465,17 @@
         var material = new THREE.MeshBasicMaterial({ map: Texture });
         material.side = THREE.DoubleSide; //两面都显示
         hollowCylinder = new THREE.Mesh(geometry, material);
-        hollowCylinder.name = "慕斯外边";
+        hollowCylinder.name = '慕斯外边';
         hollowCylinder.userData = { type: 1, id: 10 };
-        hollowCylinder.userData.text = "主要成分：慕斯粉";
+        hollowCylinder.userData.text = '主要成分：慕斯粉';
         groupHollowCylinder.add(hollowCylinder);
         var ge = new THREE.SphereBufferGeometry(3, 64, 64);
         var ma = new THREE.MeshBasicMaterial({ color: 0x7e8c19 });
         var cube = new THREE.Mesh(ge, ma);
         cube.position.set(49 * Math.sin(0.3), 4.4, 49 * Math.cos(0.3));
-        cube.name = "巧克力青色";
+        cube.name = '巧克力青色';
         cube.userData = { type: 2, id: 101 };
-        cube.userData.text = "为巧克力制作而成 外部点缀";
+        cube.userData.text = '为巧克力制作而成 外部点缀';
         groupHollowCylinder.add(cube);
         var cube2 = cube.clone();
         cube2.position.set(51 * Math.sin(1), -3, 51 * Math.cos(1));
@@ -482,7 +495,7 @@
         groupMain.add(groupHollowCylinder2);
         colorList.push(groupHollowCylinder2.children[0]);
         groupMainDabel.add(groupHollowCylinder2.clone());
-        var str = "";
+        var str = '';
         cube.userData.tagData = {
           x: 52 * Math.sin(0.3),
           y: 4.4,
@@ -499,7 +512,7 @@
             0
           )
         ); //加入line
-        str += '<div id="' + cube.userData.id + '">' + cube.name + "</div>\n";
+        str += '<div id="' + cube.userData.id + '">' + cube.name + '</div>\n';
         tagsList.push(cube); //加入标签数组
         hollowCylinder.userData.tagData = {
           x: 52.5,
@@ -517,10 +530,10 @@
           hollowCylinder.userData.id +
           '">' +
           hollowCylinder.name +
-          "</div>\n";
+          '</div>\n';
         tagsList.push(hollowCylinder); //加入标签数组
         colorList.push(hollowCylinder);
-        $("#tagsTitle").html(str);
+        $('#tagsTitle').html(str);
       }
 
       //划线
@@ -633,7 +646,7 @@
         outlinePass.hiddenEdgeColor.set(configOutline.hiddenEdgeColor);
         composer.addPass(outlinePass);
         effectFXAA = new ShaderPass(FXAAShader);
-        effectFXAA.uniforms["resolution"].value.set(
+        effectFXAA.uniforms['resolution'].value.set(
           1 / window.innerWidth,
           1 / window.innerHeight
         );
@@ -706,16 +719,16 @@
           moveCount = 0;
           moveFlag = false;
           if (removeFlag == 1) {
-            $("#move")[0].innerHTML = "合成";
+            $('#move')[0].innerHTML = '合成';
             tagsFlag = true;
-            $("#tagsTitle").addClass("on");
+            $('#tagsTitle').addClass('on');
             tagsVisbleFun(true);
             removeFlag = -1;
           } else {
-            $("#move")[0].innerHTML = "分解";
+            $('#move')[0].innerHTML = '分解';
             removeFlag = 1;
             tagsFlag = false;
-            $("#tagsTitle").removeClass("on");
+            $('#tagsTitle').removeClass('on');
             tagsVisbleFun(false);
           }
         }
@@ -740,7 +753,7 @@
             },
             ppScale
           ).project(camera);
-          $("#" + ele.userData.id).css({
+          $('#' + ele.userData.id).css({
             left: vector1.x * halfWidth - 15 + halfWidth,
             top: -vector1.y * halfHeight - 10 + halfHeight,
           });
@@ -770,29 +783,29 @@
         composer.render();
       }
 
-      $("#MenuBtnClick").on("click", function (e) {
+      $('#MenuBtnClick').on('click', function (e) {
         var target = e.target || e.srcElement;
-        if (target.id == "move") {
+        if (target.id == 'move') {
           moveFlag ? (moveFlag = false) : (moveFlag = true);
-          target.innerHTML == "暂停"
-            ? (target.innerHTML = "继续")
-            : (target.innerHTML = "暂停");
+          target.innerHTML == '暂停'
+            ? (target.innerHTML = '继续')
+            : (target.innerHTML = '暂停');
         }
       });
 
-      $("#MenuBtnChange").on("change", function (e) {
+      $('#MenuBtnChange').on('change', function (e) {
         var target = e.target || e.srcElement;
-        if (target.id == "autoRotate") {
+        if (target.id == 'autoRotate') {
           cameraControls.autoRotate
             ? (cameraControls.autoRotate = false)
             : (cameraControls.autoRotate = true);
         }
-        if (target.id == "visible")
+        if (target.id == 'visible')
           colorList.forEach((ele) => {
             ele.material.color.set(target.value);
           });
-        if (target.id == "cokeSize") {
-          if (target.value == "6") {
+        if (target.id == 'cokeSize') {
+          if (target.value == '6') {
             groupMain.scale.set(1, 1, 1);
             groupTop.position.y = 26;
             if (groupMainDabel.visible) {
@@ -800,7 +813,7 @@
               groupMainDabel.visible = false;
             }
           }
-          if (target.value == "8") {
+          if (target.value == '8') {
             groupMain.scale.set(1.33, 1.33, 1.33);
             groupTop.position.y = 33;
             if (groupMainDabel.visible) {
@@ -808,7 +821,7 @@
               groupMainDabel.visible = false;
             }
           }
-          if (target.value == "86") {
+          if (target.value == '86') {
             groupTop.position.y = 62;
             if (!groupMainDabel.visible) {
               groupMain.position.y += 36;

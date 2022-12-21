@@ -170,7 +170,6 @@ a {
 }
 #tagsTitle > div {
   position: absolute;
-  z-index: 66;
   padding: 10px;
   background: rgba(255, 255, 255, 0.5);
   line-height: 1;
@@ -181,4 +180,18 @@ a {
 }
 #tagsTitle.on > div {
   display: block;
+}
+
+.github-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  right: 0px;
+}
+.github-btn svg {
+  fill: #fff;
+  width: 20px;
+  height: 20px;
 }
