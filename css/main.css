@@ -185,13 +185,22 @@ a {
 .github-btn {
   cursor: pointer;
   position: absolute;
-  top: 2px;
-  width: 20px;
-  height: 20px;
-  right: 0px;
+  top: 5px;
+  width: 24px;
+  height: 24px;
+  right: 5px;
 }
 .github-btn svg {
   fill: #fff;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
+}
+
+.gitee-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  width: 28px;
+  height: 28px;
+  right: 34px;
 }
